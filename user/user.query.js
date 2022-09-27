@@ -1,13 +1,15 @@
 const getUsersQuery = () => `
-
+  SELECT * from table_user
 `;
 
-const getUserByIdQuery = () => `
-
+const getUserByIdQuery = (id) => `
+  SELECT * from table_user
+  WHERE id=${id}
 `;
 
-const getUserByEmailQuery = () => `
-
+const getUserByEmailQuery = (email) => `
+  SELECT * from table_user
+  WHERE email=${email}
 `;
 
 module.exports = {

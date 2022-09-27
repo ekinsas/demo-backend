@@ -1,4 +1,9 @@
 const { query, body, param } = require('express-validator');
+const {jwt} = require('jsonwebtoken')
+const {
+  ReasonPhrases,
+  StatusCodes,
+} = require('http-status-codes');
 
 const validateGetUserByEmailPayload = () => {
   return [
@@ -11,6 +16,17 @@ const validateGetUserByEmailPayload = () => {
   ];
 };
 
+const validateRole = (req, res, next) => {
+  const token = req.header.Authorization
+  if (!token) {
+    return res.status(StatusCodes.BAD_REQUEST).send("You are not permission")
+  } 
+  next()
+}
+
+
+
 module.exports = {
   validateGetUserByEmailPayload,
+  validateRole
 };

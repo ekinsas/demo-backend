@@ -17,7 +17,7 @@ const getUsers = async () => {
 
 const getUserById = async (id) => {
   try {
-    return await database.query(getUserByIdQuery(), [id]);
+    return await database.query(getUserByIdQuery(id), [id]);
   } catch (error) {
     throw new Error(`Service: ${error.message}`);
   }
@@ -25,7 +25,7 @@ const getUserById = async (id) => {
 
 const getUserByEmail = async (email) => {
   try {
-    return await database.query(getUserByEmailQuery(), [email]);
+    return await database.query(getUserByEmailQuery(email), [email]);
   } catch (error) {
     throw new Error(`Service: ${error.message}`);
   }

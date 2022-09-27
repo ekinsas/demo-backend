@@ -8,6 +8,6 @@ const {
 
 const router = express.Router();
 
-router.get(`/user/`, validateGetUserByEmailPayload(), getUserByEmail);
+router.get(`/get-user/`, validateGetUserByEmailPayload(), getUserByEmail);
 
 module.exports = router;

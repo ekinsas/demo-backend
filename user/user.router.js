@@ -1,12 +1,16 @@
 const express = require('express');
 const {
-  getUserByEmail,
+  getUserByEmail, getUsers, getUserById
 } = require('./user.controller');
 const {
-  validateGetUserByEmailPayload,
+  validateGetUserByEmailPayload, validateGetUserByid
 } = require('./user.validator');
 
 const router = express.Router();
+
+router.get(`/get-users/`, getUsers);
+
+router.post(`/get-user-by-id/`, validateGetUserByid(), getUserById);
 
 router.get(`/get-user/`, validateGetUserByEmailPayload(), getUserByEmail);
 

@@ -8,11 +8,23 @@ const { validationResult } = require('express-validator');
 const service = require('./user.service');
 
 const getUsers = async (req, res) => {
-
+  try {
+    const result = await service.getUsers();
+    return res.status(200).send(result)
+  } catch (error) {
+    return res.status(400).json(error)
+  }
 };
 
 const getUserById = async (req, res) => {
-
+  try {
+    if(!req.body.id) throw new Error('Error')
+    let id = req.body.id;
+    const result = await service.getUserById(id);
+    return res.status(200).send(result)
+  } catch (error) {
+    return res.status(400).json(error)
+  }
 };
 
 const getUserByEmail = async (req, res) => {
